@@ -12,6 +12,3 @@ class MainView(generic.ListView):
     def get_queryset(self):
         return QueiContent.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:10]
 
-class IndexView(generic.TemplateView):
-    template_name = "doors/index.html"
-    
