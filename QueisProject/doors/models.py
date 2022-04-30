@@ -9,14 +9,17 @@ class User(models.Model):
 
     def the_user_exists(self):
        return self.user_name in User.objects.all()
-    
 
-class QueiContent(models.Model):
+class Quei(models.Model):
    title = models.CharField(max_length=200)
    text_description = models.CharField(max_length=100, default="Not description")
-   text_content = models.TextField(default="Not Content")
    pub_date = models.DateTimeField("date published")
    autor = models.ForeignKey(User, on_delete= models.CASCADE)
+   category = models.CharField(max_length=20)
+
+class QueiContent(models.Model):
+   quei_referece = models.ForeignKey(Quei, on_delete= models.CASCADE, default=0)
+   text_content = models.TextField(default="Not Content")
    votes = models.IntegerField(default=0)
 
    def __str__(self):
