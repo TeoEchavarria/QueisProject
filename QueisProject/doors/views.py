@@ -1,9 +1,9 @@
 from re import template
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.utils import timezone
 
-from .models import Quei, QueiContent
+from .models import Quei, QueiContent, User
 
 class MainView(generic.ListView):
     template_name = "doors/main.html"
@@ -18,3 +18,10 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         return Quei.objects.filter(pub_date__lte=timezone.now())
+
+class ProfileView(generic.DetailView):
+    model = User
+    template_name = "doors/profile.html"
+
+    def get_queryset(self):
+        return User.objects.all()

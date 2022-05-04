@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Main</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'doors/main/details.css' %}">
+    <link rel="stylesheet" href="{% static 'doors/main/bootstrap.min.css' %}">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      @media (min-width: 980px)
+        .col-md-3 {
+            flex-shrink: 0 !important;
+            width: 100% !important;
+        }   
+    </style>
+
+  </head>
+  <body>
+    
+    <header class="p-3 mb-3 border-bottom">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <img class="bi me-2" width="40" height="40" src="{% static 'images/key_black.png' %}" alt="">
+          </a>
+  
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{% url 'queis:main' %}" class="nav-link px-2 link-dark">Home</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Wallet</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Projects</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Market</a></li>
+          </ul>
+  
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+
+          <div class="dropdown text-end me-2">
+            <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+              </svg>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownUser1">
+              <div class="list-group list-group-flush scrollarea">
+                {% if new_notifications %}
+                  {% for notification in new_notifications %}
+                    <li><a class="dropdown-item" href="#">{{ notification.type}} - {{ notification.reference }}</a></li>
+                  {% endfor %}
+                {% else %}
+                  <li class="px-2">No notifications</li>
+                {% endif %}
+            </ul>
+          </div>
+  
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+      <!-- PROFILE QUEI -->
+      <div id="conteactme" class="container linkedIn">
+        <div class="row flex-lg-row-reverse align-items-center p-4">
+          <div class="col-lg-8">
+              <h6 class="lead fs-6">{{user.level}}</h6>
+              <h2 class="display-6 fw-bold lh-1 mb-3">{{user.user_name}}</h2>
+              <p class="lead fs-6">Mathematician | Python Backed | Frameworks & Librerías | FastAPI | Data Science.</p>
+              <p class="lead fs-6 pe-5 me-5">{{user.user_description}}</p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-start ">
+                  <!--<button type="button" class="btn btn-outline-light btn-lg px-4" onclick="location.href='{{user.LinkedIn}} ' ">Conectar</button> -->
+                  <button type="button" class="btn btn-outline-dark btn-lg px-4" onclick="location.href='{{user.LinkedIn}} ' ">Conectar</button> 
+              </div>
+          </div>
+          <div class=" col-lg-4 d-flex justify-content-center my-3">
+              {%if user.image %}
+                <img src="{{user.image}}" class="d-block mx-lg-auto img-fluid" width="200" height="200" loading="lazy">
+              {%else%}
+                <img src="{% static 'images/default-avatar.jpg' %}" class="d-block mx-lg-auto img-fluid" width="200" height="200" loading="lazy">
+              {%endif%}
+          </div>
+        </div>
+      </div>
+    
+
+
+    <script src="{% static 'doors/main/bootstrap.bundle.min.js' %}"></script>
+  </body>
+
+</html>
