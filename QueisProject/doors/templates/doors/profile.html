@@ -107,11 +107,7 @@
               </div>
           </div>
           <div class=" col-lg-4 d-flex justify-content-center my-3">
-              {%if user.image %}
-                <img src="{{user.image}}" class="d-block mx-lg-auto img-fluid" width="200" height="200" loading="lazy">
-              {%else%}
-                <img src="{% static 'images/default-avatar.jpg' %}" class="d-block mx-lg-auto img-fluid" width="200" height="200" loading="lazy">
-              {%endif%}
+            <img src="{{user.image.name}}" class="d-block mx-lg-auto img-fluid" width="200" height="200" loading="lazy">            
           </div>
         </div>
       </div>

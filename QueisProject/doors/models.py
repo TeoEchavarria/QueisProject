@@ -4,8 +4,9 @@ from django.utils import timezone
 
 class User(models.Model):
     user_name = models.CharField(max_length=80, unique=True)
+    level = models.CharField(default="Basic", max_length=20)
     user_description = models.CharField(max_length=120 , default="Not description")
-    image = models.ImageField(upload_to='static/images', default= './static/images/default-avatar.jpg')
+    image = models.ImageField(upload_to='users')
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=30)
 
