@@ -14,8 +14,8 @@
 
     <!-- Bootstrap core CSS -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'doors/main/details.css' %}">
-    <link rel="stylesheet" href="{% static 'doors/main/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static './doors/main/details.css' %}">
+    <link rel="stylesheet" href="{% static './doors/main/bootstrap.min.css' %}">
 
     <style>
       .bd-placeholder-img {
@@ -84,7 +84,7 @@
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
               <li><a class="dropdown-item" href="#">New project...</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'queis:profile' user.id  %}">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Sign out</a></li>
             </ul>
@@ -100,7 +100,7 @@
           <div class="col-md-6 px-0">
             <h1 class="display-4 fst-italic">{{ quei.title }}</h1>
             <p class="lead my-3">{{ quei.text_description }}</p>
-            <p class="lead mb-0">Author : <a href="#" class="text-white fw-bold">{{ quei.autor }}</a></p>
+            <p class="lead mb-0">Author : <a href="{% url 'queis:profile' quei.autor.id  %}" class="text-white fw-bold">{{ quei.autor }}</a></p>
           </div>
         </div>
       
