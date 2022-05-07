@@ -53,7 +53,7 @@
             <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Wallet</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Projects</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Market</a></li>
+            <li><a href="{% url 'queis:market' %}" class="nav-link px-2 link-dark">Market</a></li>
           </ul>
   
           <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -105,16 +105,19 @@
             <span class="fs-5 fw-semibold">Was Published Recently</span>
           </div>
           <div class="list-group list-group-flush border-bottom scrollarea">
-            {% if latest_quei_list %}
-              {% for quei in latest_quei_list %}
-                <a href="{% url 'queis:detail_door' quei.id  %}" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+
+            {% if latest_door_list %}
+
+              {% for door in latest_door_list %}
+                <a href="{% url 'queis:detail_door' door.id  %}" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
                   <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">{{quei.title}}</strong>
-                    <small>{{quei.time_pub_recently }}</small>
+                    <strong class="mb-1">{{door.title}}</strong>
+                    <small>{{door.time_pub_recently }}</small>
                   </div>
-                  <div class="col-10 mb-1 small">{{ quei.text_description}}</div>
+                  <div class="col-10 mb-1 small">{{ door.text_description}}</div>
                 </a>
               {% endfor %}
+
             {% else %}
               <a href="#" class="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
                   <div class="d-flex w-100 align-items-center justify-content-between">
@@ -125,6 +128,7 @@
               </a>
             {% endif %}
       
+
           </div>
         </div>
         <div class="col-md-6 themed-grid-col">.col-md-6</div>

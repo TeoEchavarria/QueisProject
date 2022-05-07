@@ -16,11 +16,12 @@ class User(models.Model):
     def the_user_exists(self):
        return self.user_name in User.objects.all()
 
-class Quei(models.Model):
+class Door(models.Model):
    title = models.CharField(max_length=200)
    text_description = models.CharField(max_length=120, default="Not description")
    pub_date = models.DateTimeField("date published")
    autor = models.ForeignKey(User, on_delete= models.CASCADE)
+   value = models.IntegerField(default=0)
    category = models.CharField(max_length=20, default="NoCategory")
 
    def time_pub_recently(self):
@@ -44,13 +45,13 @@ class Quei(models.Model):
       return timezone.now() >= self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 
-class QueiContent(models.Model):
-   quei_referece = models.ForeignKey(Quei, on_delete= models.CASCADE, default=0)
+class DoorContent(models.Model):
+   door_referece = models.ForeignKey(Door, on_delete= models.CASCADE, default=0)
    text_content = models.TextField(default="Not text Content")
    votes = models.IntegerField(default=0)
 
 class Comment(models.Model):
-   quei = models.ForeignKey(QueiContent, on_delete=models.CASCADE)
+   door = models.ForeignKey(DoorContent, on_delete=models.CASCADE, default=0)
    comment_text = models.CharField(max_length=300)
    votes = models.IntegerField(default=0)
 
