@@ -17,7 +17,7 @@ class DetailView(generic.DetailView):
     template_name = "doors/detail_door.html"
 
     def get_queryset(self):
-        return Door.objects.filter(pub_date__lte=timezone.now())
+        return DoorContent.objects.all()
 
 class ProfileView(generic.DetailView):
     model = User

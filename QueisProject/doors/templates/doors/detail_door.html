@@ -98,9 +98,9 @@
         {% csrf_token %}
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
           <div class="col-md-6 px-0">
-            <h1 class="display-4 fst-italic">{{ door.title }}</h1>
-            <p class="lead my-3">{{ door.text_description }}</p>
-            <p class="lead mb-0">Author : <a href="{% url 'queis:profile' door.autor.id  %}" class="text-white fw-bold">{{ door.autor }}</a></p>
+            <h1 class="display-4 fst-italic">{{ doorcontent.door_referece.title }}</h1>
+            <p class="lead my-3">{{ doorcontent.door_referece.text_description }}</p>
+            <p class="lead mb-0">Author : <a href="{% url 'queis:profile' doorcontent.door_referece.autor.id  %}" class="text-white fw-bold">{{ doorcontent.door_referece.autor }}</a></p>
           </div>
         </div>
       
@@ -108,10 +108,8 @@
         <div class="row g-5">
           <div class="col-md-8">     
             <article class="blog-post">
-              <p class="blog-post-meta">{{ door.pub_date }}</p>
-                {% for text in door.doorcontent.all %}
-                    {{text.text_content}}
-                {% endfor %}
+              <p class="blog-post-meta">{{ doorcontent.door_referece.pub_date }}</p>
+              <p>{{doorcontent.text_content}}</p>
             </article>      
           </div>
       

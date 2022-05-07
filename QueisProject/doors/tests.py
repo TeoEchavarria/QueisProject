@@ -24,3 +24,9 @@ class UsersModelTest(TestCase):
         except IntegrityError:
             self.assertTrue(True)
 
+def DoorContentModelTest(TestCase):
+    def test_every_door_must_have_a_DoorContent(self):
+        """Test to prove that every door must have a content inside it so that there are no empty doors."""
+        pass
+    
+
