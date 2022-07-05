@@ -19,7 +19,7 @@ class User(models.Model):
 class Door(models.Model):
    title = models.CharField(max_length=200)
    text_description = models.CharField(max_length=120, default="Not description")
-   pub_date = models.DateTimeField("date published")
+   pub_date = models.DateTimeField("date published", default=None)
    autor = models.ForeignKey(User, on_delete= models.CASCADE)
    value = models.IntegerField(default=0)
    category = models.CharField(max_length=20, default="NoCategory")
@@ -53,7 +53,7 @@ class DoorContent(models.Model):
 class Comment(models.Model):
    door = models.ForeignKey(DoorContent, on_delete=models.CASCADE, default=0)
    comment_text = models.CharField(max_length=300)
-   votes = models.IntegerField(default=0)
+   votes = models.IntegerField(default=1)
 
    def __str__(self):
       return self.comment_texts
