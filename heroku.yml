@@ -7,8 +7,6 @@ build:
        dockerfile: Dockerfile
        target: builder
     web: gunicorn QueisProject.wsgi:application --log-file - --log-level debug
-python manage.py collectstatic --noinput
-manage.py migrate
     web: Dockerfile
 run:
   web: bundle exec puma -C config/puma.rb
