@@ -7,6 +7,6 @@ build:
        dockerfile: Dockerfile
        target: builder
     web: Dockerfile
-    web: uvicorn app:main
+    web: gunicorn core.wsgi --log-file=-
 run:
   web: bundle exec puma -C config/puma.rb
