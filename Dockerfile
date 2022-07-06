@@ -12,6 +12,6 @@ ARG RAILS_ENV=production
 ARG FOO
 
 
-CMD ["bash", "npm run lint"]
+CMD ["bash"]
 
 
