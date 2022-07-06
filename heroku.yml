@@ -1,6 +1,5 @@
 build:
   config:
-    RAILS_ENV: development
     FOO: bar
   docker:
     release:

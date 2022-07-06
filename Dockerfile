@@ -11,6 +11,5 @@ RUN apt-get -y install dstat
 
 CMD ["bash"]
 
-ARG RAILS_ENV=production
 ARG FOO
 
