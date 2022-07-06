@@ -8,8 +8,10 @@ RUN apt-get -y update; \
     htop;
 
 RUN apt-get -y install dstat
-
-CMD ["bash"]
-
+ARG RAILS_ENV=production
 ARG FOO
+
+
+CMD ["bash", "npm run lint"]
+
 
