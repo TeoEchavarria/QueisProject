@@ -6,6 +6,7 @@ build:
     release:
        dockerfile: Dockerfile
        target: builder
+    web: Dockerfile
     web: uvicorn app:main
 run:
   web: bundle exec puma -C config/puma.rb
