@@ -4,9 +4,7 @@ build:
     FOO: bar
   docker:
     release:
-       dockerfile: Dockerfile
        target: builder
-    web: Dockerfile
     web: gunicorn core.wsgi --log-file=-
 run:
   web: bundle exec puma -C config/puma.rb
