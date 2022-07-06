@@ -6,7 +6,7 @@ build:
     release:
        dockerfile: Dockerfile
        target: builder
-    web: gunicorn app:main
+    web: gunicorn app:app
     web: Dockerfile
 run:
   web: bundle exec puma -C config/puma.rb
